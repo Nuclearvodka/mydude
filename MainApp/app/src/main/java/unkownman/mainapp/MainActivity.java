@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+        System.exit(0);
+    }
     public void TapTap(View view) {
 
 
@@ -67,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
 
                 SharedPreferences sharedPref= getSharedPreferences("mypref", 0);
                 Integer scoreCount = sharedPref.getInt("Score", 0);
